@@ -17,13 +17,13 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<context:component-scan
-		base-package="formationJpaSpring.service"></context:component-scan>
+		base-package="formationJpaSpring.service"></context:component-scan> 
 
 	<context:property-placeholder
 		location="classpath:infos.properties" />
 
 
-	<jpa:repositories base-package="formationJpaSpring.repository"></jpa:repositories>
+	<jpa:repositories base-package="metier"></jpa:repositories>
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
@@ -38,8 +38,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="packagesToScan"
-			value="formationJpaSpring.metier"></property>
+		<property name="packagesToScan" value="metier, dao"></property>
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -49,7 +48,7 @@
 		</property>
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
