@@ -1,7 +1,9 @@
 package metier;
 
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Realisateur extends Film {
@@ -12,8 +14,8 @@ public class Realisateur extends Film {
 	private String prenom; 
 	private String nom;
 	
-	@ManyToMany
-	private List<Film> films;
+	//private List<Film> films;
+
 	
 	public Integer getId() {
 		return id;
@@ -34,22 +36,14 @@ public class Realisateur extends Film {
 		this.nom = nom;
 	}
 	
-	public List<Film> getFilms() {
-		return films;
-	}
-	public void setFilms(List<Film> films) {
-		this.films = films;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", film=" + films + "]";
+		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", film=" + "films" + "]";
 	}
 
 	
-	public void addFilm(Film f) {
-		List<Film> l = getFilms();
-		l.add(f);
-		setFilms(l);
-	}
+	
 	
 }
