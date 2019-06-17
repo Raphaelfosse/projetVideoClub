@@ -1,7 +1,9 @@
 package metier;
 
-@Entity
+import javax.persistence.*;
 
+@Entity
+@DiscriminatorValue("bluRay")
 public class BluRay extends Article {
 	
 	private boolean troisD;

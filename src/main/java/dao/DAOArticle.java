@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import metier.Article;
+
 public class DAOArticle {
 	private EntityManagerFactory emf;
 	

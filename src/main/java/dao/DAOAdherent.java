@@ -10,7 +10,6 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import formationJpaSpring.metier.Soldat;
 import metier.*;
 
 @Repository

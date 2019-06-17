@@ -1,18 +1,43 @@
 package metier;
 
-@Entity
-public class Article {
+import javax.persistence.*;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
+public class Article {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer noArticle;
 	private Integer nbDisques;
-	
-	public Article (){	
+	@ManyToOne
+	private Film film;
+	@OneToMany
+	private Adherent adherent;
+
+	public Article() {
 	}
 
 	public Article(Integer noArticle, Integer nbDisques) {
-		super();
 		this.noArticle = noArticle;
 		this.nbDisques = nbDisques;
+	}
+
+	
+	public Film getFilm() {
+		return film;
+	}
+
+	public void setFilm(Film film) {
+		this.film = film;
+	}
+
+	public Adherent getAdherent() {
+		return adherent;
+	}
+
+	public void setAdherent(Adherent adherent) {
+		this.adherent = adherent;
 	}
 
 	public Integer getNoArticle() {
@@ -33,9 +58,10 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [noArticle=" + noArticle + ", nbDisques=" + nbDisques + "]";
+		return "Article [noArticle=" + noArticle + ", nbDisques=" + nbDisques + ", film=" + film + ", adherent="
+				+ adherent + "]";
 	}
-	
-	
-	
+
+
+
 }

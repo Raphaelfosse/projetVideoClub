@@ -1,14 +1,20 @@
 package metier;
 
-public class Adherent {
+import javax.persistence.*;
 
+@Entity
+public class Adherent {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer noAdherent;
 	private ECivilite civilite;
 	private String prenom;
 	private String nom;
 
+	@Embedded
 	private Adresse adresse;
-	// private Article article;
+	@ManyToOne	
+	private Article article;
 	public Adherent() {
 
 	}

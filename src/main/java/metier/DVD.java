@@ -1,7 +1,9 @@
 package metier;
 
-@Entity
+import javax.persistence.*;
 
+@Entity
+@DiscriminatorValue("dvd")
 public class DVD extends Article{
 	
 	private boolean bonus;

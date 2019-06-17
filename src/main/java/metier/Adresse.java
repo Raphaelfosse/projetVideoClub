@@ -1,7 +1,11 @@
 package metier;
 
-public class Adresse {
+import javax.persistence.*;
 
+@Entity
+public class Adresse {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Integer numero;
 	private String rue;
@@ -57,6 +61,5 @@ public class Adresse {
 		return "Adresse [id=" + id + ", numero=" + numero + ", rue=" + rue + ", ville=" + ville + ", codePostal="
 				+ codePostal + "]";
 	}
-	
-	
+
 }

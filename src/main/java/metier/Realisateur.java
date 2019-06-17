@@ -10,6 +10,8 @@ public class Realisateur {
 	private Integer id; 
 	private String prenom; 
 	private String nom;
+	@ManyToMany
+	private Film film;
 	
 	public Integer getId() {
 		return id;
@@ -30,10 +32,17 @@ public class Realisateur {
 		this.nom = nom;
 	}
 	
+	public Film getFilm() {
+		return film;
+	}
+	public void setFilm(Film film) {
+		this.film = film;
+	}
 	@Override
 	public String toString() {
-		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + "]";
-	} 
+		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", film=" + film + "]";
+	}
+
 	
 	
 	
