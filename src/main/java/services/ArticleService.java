@@ -22,10 +22,10 @@ public class ArticleService {
 		return true;
 	}
 	
-	public void delete(Article article) {
-		Optional<Article> opt = iArticleRepository.findByIdWithNoArticle(article.getNoArticle());
-		if (opt.isPresent()) {
-			iArticleRepository.delete(opt.get());
-		}
-	}
+//	public void delete(Article article) {
+//		Optional<Article> opt = iArticleRepository.findByIdWithNoArticle(article.getNoArticle());
+//		if (opt.isPresent()) {
+//			iArticleRepository.delete(opt.get());
+//		}
+//	}
 }
