@@ -4,60 +4,43 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import metier.Article;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import metier.*;
+
+@Repository
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class DAOArticle {
-	private EntityManagerFactory emf;
+	@PersistenceContext
+	private EntityManager em;
 	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void insert(Article object) {
-		EntityManager em = emf.createEntityManager();
-
-		em.getTransaction().begin();
-
 		em.persist(object);
 
-		em.getTransaction().commit();
-
-		em.close();
 	}
 
-	public Article selectById(Integer noArticle) {
-		EntityManager em = emf.createEntityManager();
-		Article a = em.find(Article.class, noArticle);
-		em.close();
+	public Article selectById(Integer id) {
+		Article a = em.find(Article.class, id);
 		return a;
-
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void update(Article object) {
-		EntityManager em = emf.createEntityManager();
-
-		em.getTransaction().begin();
-
 		em.merge(object);
-
-		em.getTransaction().commit();
-
-		em.close();
+		
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	public void delete(Article object) {
-		EntityManager em = emf.createEntityManager();
-
-		em.getTransaction().begin();
-
 		em.remove(object);
-
-		em.getTransaction().commit();
-
-		em.close();
 
 	}
 
 	public List<Article> selectAll() {
-		EntityManager em = emf.createEntityManager();
-
-		Query query = em.createQuery("from Grade");
+		Query query = em.createQuery("from article");
 
 		List<Article> liste = query.getResultList();
 
@@ -65,6 +48,22 @@ public class DAOArticle {
 		return liste;
 
 	}
+//	public List<Article> selectAllFilm() {
+//		Query query = em.createQuery("from film");
+//
+//		List<Article> liste = query.getResultList();
+//
+//		em.close();
+//		return liste;
+//	}
+//	public List<Article> selectAllRealisateur() {
+//		Query query = em.createQuery("from realisateur");
+//
+//		List<Article> liste = query.getResultList();
+//
+//		em.close();
+//		return liste;
+//	}
 
-
+	
 }
