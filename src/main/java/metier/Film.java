@@ -19,11 +19,10 @@ public class Film {
 	private Integer id; 
 	private String titre; 
 	private Date dateSortie;
-	@OneToMany
+	@OneToMany 
 	private List<Article> articles;
-	@ManyToMany
-	@Embedded
-	private List<Realisateur> realisateurs;
+	@OneToMany (mappedBy = "key.film")
+	private List<FilmRealisateur> filmRealisateur;
 	
 	public Integer getId() {
 		return id;
@@ -50,23 +49,21 @@ public class Film {
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
-	public List<Realisateur> getRealisateurs() {
-		return realisateurs;
+
+	
+	public List<FilmRealisateur> getFilmRealisateur() {
+		return filmRealisateur;
 	}
-	public void setRealisateurs(List<Realisateur> realisateurs) {
-		this.realisateurs = realisateurs;
+	public void setFilmRealisateur(List<FilmRealisateur> filmRealisateur) {
+		this.filmRealisateur = filmRealisateur;
 	}
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", titre=" + titre + ", dateSortie=" + dateSortie + ", article=" + articles
-				+ ", realisateur=" + realisateurs + "]";
+				+ ", realisateur= realisateurs  ]";
 	}
 
-	public void addRealisateur(Realisateur r) {
-		List<Realisateur> l = getRealisateurs();
-		l.add(r);
-		setRealisateurs(l);
-	}
+	
 	
 	
 }
