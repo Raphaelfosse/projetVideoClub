@@ -16,8 +16,8 @@ public class Article {
 	private Integer nbDisques;
 	@ManyToOne
 	private Film film;
-	@OneToMany
-	private List<Adherent> adherents;
+	@ManyToOne(cascade={CascadeType.ALL})
+	private Adherent adherents;
 
 	public Article() {
 	}
@@ -34,13 +34,14 @@ public class Article {
 	public void setFilm(Film film) {
 		this.film = film;
 	}
-
-
-	public List<Adherent> getAdherents() {
+	
+	
+	
+	public Adherent getAdherents() {
 		return adherents;
 	}
 
-	public void setAdherents(List<Adherent> adherents) {
+	public void setAdherents(Adherent adherents) {
 		this.adherents = adherents;
 	}
 
