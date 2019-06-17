@@ -3,21 +3,24 @@ package metier;
 import javax.persistence.*;
 
 @Entity
-//@NamedQueries({
-//	@NamedQuery(name = "Adherent.selectAllWithFilm", query = "select a from Adherent a left join fetch a.film")})
+// @NamedQueries({
+// @NamedQuery(name = "Adherent.selectAllWithFilm", query = "select a from
+// Adherent a left join fetch a.film")})
 
 public class Adherent {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer noAdherent;
+	@Enumerated(EnumType.STRING)
 	private ECivilite civilite;
 	private String prenom;
 	private String nom;
 
 	@Embedded
 	private Adresse adresse;
-	@ManyToOne	
+	@ManyToOne
 	private Article article;
+
 	public Adherent() {
 
 	}
@@ -53,8 +56,6 @@ public class Adherent {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
-	
 
 	public Adresse getAdresse() {
 		return adresse;

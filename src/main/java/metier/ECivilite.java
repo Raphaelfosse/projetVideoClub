@@ -12,5 +12,9 @@ public enum ECivilite {
 	public String getLibele() {
 		return libele;
 	}
+	
+	public String toString(){
+		return this.libele;
+	}
 
 }
