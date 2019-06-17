@@ -4,13 +4,14 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Realisateur {
+public class Realisateur extends Film {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id; 
 	private String prenom; 
 	private String nom;
+	
 	@ManyToMany
 	private List<Film> films;
 	
