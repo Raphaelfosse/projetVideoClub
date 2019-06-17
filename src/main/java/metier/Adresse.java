@@ -3,6 +3,7 @@ package metier;
 import javax.persistence.*;
 
 @Entity
+@Embeddable
 public class Adresse {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

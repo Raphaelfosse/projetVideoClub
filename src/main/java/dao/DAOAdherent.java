@@ -1,14 +1,11 @@
 package dao;
 
-import java.util.List;
+import java.util.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 import org.springframework.stereotype.*;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.*;
 
 import metier.*;
 
@@ -49,7 +46,69 @@ public class DAOAdherent implements IDAOAdherent {
 
 	@Override
 	public List<Adherent> selectAll() {
-		Query query = em.createQuery("from Adehrent");
+		Query query = em.createQuery("from Adherent");
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+	}
+
+	@Override
+	public List<Adherent> selectAllWithDVD() {
+		Query query = em.createNativeQuery(
+				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='dvd' ",
+				Adherent.class);
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+
+	}
+
+	@Override
+	public List<Adherent> selectAllWithBluRay() {
+		Query query = em.createNativeQuery(
+				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='bluray' ",
+				Adherent.class);
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+	}
+
+	@Override
+	public List<Adherent> selectAllWithFilm() {
+
+		Query query = em.createNamedQuery("Adherent.selectAllWithFilm", Adherent.class);
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+	}
+
+	@Override
+	public List<Adherent> selectAllWithRealisateur() {
+		// todo
+		Query query = em.createNamedQuery("Adherent.selectAllWithRealisateur", Adherent.class);
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+	}
+
+	@Override
+	public List<Adherent> selectAllWithAdresseId(Integer id) {
+		Query query = em.createNativeQuery("SELECT * from adherent,adresse where adherent.adresse=id ", Adherent.class);
+
+		List<Adherent> liste = query.getResultList();
+
+		return liste;
+	}
+
+	@Override
+	public List<Adherent> selectAllWithCodePostal(String codePostal) {
+		// todo
+		Query query = em.createNativeQuery("SELECT * from adherent,adresse where adherent.adresse=id ", Adherent.class);
 
 		List<Adherent> liste = query.getResultList();
 
