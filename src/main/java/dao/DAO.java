@@ -1,9 +1,8 @@
 package dao;
 
-import java.util.List;
+import java.util.*;
 
 public interface DAO<T,K> {
-
 	
 	public void insert(T object);
 	public T selectById(K id);
