@@ -23,7 +23,7 @@
 		location="classpath:infos.properties" />
 
 
-	<jpa:repositories base-package="metier"></jpa:repositories>
+	<jpa:repositories base-package="metier, dao"></jpa:repositories>
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">

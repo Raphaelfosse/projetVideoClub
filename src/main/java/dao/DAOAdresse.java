@@ -46,7 +46,7 @@ public class DAOAdresse implements IDAOAdresse {
 
 	@Override
 	public List<Adresse> selectAll() {
-		Query query = em.createQuery("from Adehrent");
+		Query query = em.createQuery("from Adherent");
 
 		List<Adresse> liste = query.getResultList();
 

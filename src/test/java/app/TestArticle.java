@@ -1,4 +1,4 @@
-package testArticle;
+package app;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

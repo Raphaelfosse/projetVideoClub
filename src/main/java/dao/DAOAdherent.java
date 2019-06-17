@@ -53,58 +53,58 @@ public class DAOAdherent implements IDAOAdherent {
 		return liste;
 	}
 
-	@Override
-	public List<Adherent> selectAllWithDVD() {
-		Query query = em.createNativeQuery(
-				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='dvd' ",
-				Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-
-	}
-
-	@Override
-	public List<Adherent> selectAllWithBluRay() {
-		Query query = em.createNativeQuery(
-				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='bluray' ",
-				Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-	}
-
-	@Override
-	public List<Adherent> selectAllWithFilm() {
-
-		Query query = em.createNamedQuery("Adherent.selectAllWithFilm", Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-	}
-
-	@Override
-	public List<Adherent> selectAllWithRealisateur() {
-		// todo
-		Query query = em.createNamedQuery("Adherent.selectAllWithRealisateur", Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-	}
-
-
-	@Override
-	public List<Adherent> selectAllWithCodePostal(String codePostal) {
-		// todo
-		Query query = em.createNativeQuery("SELECT * from adherent,adresse where adherent.adresse=id ", Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-	}
+//	@Override
+//	public List<Adherent> selectAllWithDVD() {
+//		Query query = em.createNativeQuery(
+//				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='dvd' ",
+//				Adherent.class);
+//
+//		List<Adherent> liste = query.getResultList();
+//
+//		return liste;
+//
+//	}
+//
+//	@Override
+//	public List<Adherent> selectAllWithBluRay() {
+//		Query query = em.createNativeQuery(
+//				"SELECT * from adherent,article where adherent.article_id=article.id and article_type='bluray' ",
+//				Adherent.class);
+//
+//		List<Adherent> liste = query.getResultList();
+//
+//		return liste;
+//	}
+//
+//	@Override
+//	public List<Adherent> selectAllWithFilm() {
+//
+//		Query query = em.createNamedQuery("Adherent.selectAllWithFilm", Adherent.class);
+//
+//		List<Adherent> liste = query.getResultList();
+//
+//		return liste;
+//	}
+//
+//	@Override
+//	public List<Adherent> selectAllWithRealisateur() {
+//		// todo
+//		Query query = em.createNamedQuery("Adherent.selectAllWithRealisateur", Adherent.class);
+//
+//		List<Adherent> liste = query.getResultList();
+//
+//		return liste;
+//	}
+//
+//
+//	@Override
+//	public List<Adherent> selectAllWithCodePostal(String codePostal) {
+//		// todo
+//		Query query = em.createNativeQuery("SELECT * from adherent,adresse where adherent.adresse=id ", Adherent.class);
+//
+//		List<Adherent> liste = query.getResultList();
+//
+//		return liste;
+//	}
 
 }

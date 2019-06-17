@@ -3,8 +3,8 @@ package metier;
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name = "Adherent.selectAllWithFilm", query = "select a from Adherent a left join fetch a.film")})
+//@NamedQueries({
+//	@NamedQuery(name = "Adherent.selectAllWithFilm", query = "select a from Adherent a left join fetch a.film")})
 
 public class Adherent {
 	@Id
@@ -69,9 +69,5 @@ public class Adherent {
 		return "Adherent [noAdherent=" + noAdherent + ", civilite=" + civilite + ", prenom=" + prenom + ", nom=" + nom
 				+ ", adresse=" + adresse + "]";
 	}
-
-
-	
-	
 
 }
