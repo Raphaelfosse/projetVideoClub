@@ -1,8 +1,15 @@
 package metier;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Film {
@@ -15,6 +22,7 @@ public class Film {
 	@OneToMany
 	private List<Article> articles;
 	@ManyToMany
+	@Embedded
 	private List<Realisateur> realisateurs;
 	
 	public Integer getId() {

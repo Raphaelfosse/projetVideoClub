@@ -1,9 +1,14 @@
 package metier;
 
-import javax.persistence.*;
-import java.util.*;
+import java.util.List;
 
-@Entity
+import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Embeddable
 public class Realisateur {
 	
 	@Id
