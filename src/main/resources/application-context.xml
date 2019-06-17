@@ -17,13 +17,13 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<context:component-scan
-		base-package="formationJpaSpring.service"></context:component-scan> 
+		base-package="services"></context:component-scan> 
 
 	<context:property-placeholder
 		location="classpath:infos.properties" />
 
 
-	<jpa:repositories base-package="metier, dao"></jpa:repositories>
+	<jpa:repositories base-package="metier"></jpa:repositories>
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
@@ -38,7 +38,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="packagesToScan" value="metier, dao"></property>
+		<property name="packagesToScan" value="metier"></property>
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
