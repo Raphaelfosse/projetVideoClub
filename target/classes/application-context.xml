@@ -23,7 +23,7 @@
 		location="classpath:infos.properties" />
 
 
-	<jpa:repositories base-package="metier"></jpa:repositories>
+	<jpa:repositories base-package="metier, dao, repository, services"></jpa:repositories>
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource">
@@ -38,7 +38,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="packagesToScan" value="metier"></property>
+		<property name="packagesToScan" value="metier, dao, repository, services"></property>
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
