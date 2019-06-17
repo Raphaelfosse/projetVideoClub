@@ -15,44 +15,24 @@ import dao.*;
 @Service
 public class FilmService {
 	@Autowired
-	private IFilmRepository filmRepository;
+	private IFilmRepository iFilmRepository;
 
-//	@Autowired
-//	private GradeRepository gradeRepository;
-//
-//	@Autowired
-//	private SoldatGradeRepository soldatGradeRepository;
-//
-//	public boolean insert(Soldat soldat) {
-//		if (soldat.getNom() == null || soldat.getNom().isEmpty()) {
-//			return false;
-//		}
-//		soldatRepository.save(soldat);
-//		return true;
-//	}
-//
-//	public void delete(Soldat soldat) {
-//		Optional<Soldat> opt = soldatRepository.findByIdWithGrades(soldat.getId());
-//		if (opt.isPresent()) {
-//			soldatRepository.delete(opt.get());
-//		}
-//	}
-//
-//	public void addGrade(Soldat soldat, Grade grade) {
-//		Optional<Soldat> opt = soldatRepository.findByIdWithGrades(soldat.getId());
-//		if (opt.isPresent()) {
-//			SoldatGrade soldatGrade = new SoldatGrade();
-//
-//			soldatGrade.setKey(new SoldatGradeKey(opt.get(), gradeRepository.findById(grade.getId()).get()));
-//			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//			try {
-//				soldatGrade.setDateAffectation(sdf.parse("10/02/2018"));
-//			} catch (ParseException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			soldatGradeRepository.save(soldatGrade);
-//		}
-//	}
+	@Autowired
+	private IRealisateurRepository iRealisateurRepository;
+
+	@Autowired
+	private IFilmRealisateurRepository iFilmRealisateurRepository;
+
+	public void addRealisateur(Film film, Realisateur realisateur) {
+		
+		Optional<Film> opt = iFilmRepository.findByIdWithRealisateur(film.getId());
+		if (opt.isPresent()) {
+			FilmRealisateur fr = new FilmRealisateur();
+			
+			fr.setKey(new FilmRealisateurKey(opt.get(), iRealisateurRepository.findById(realisateur.getId()).get()));
+
+			iFilmRealisateurRepository.save(fr);
+		}
+	}
 
 }

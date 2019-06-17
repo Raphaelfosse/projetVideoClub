@@ -1,5 +1,8 @@
 package metier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,8 +21,18 @@ public class Adherent {
 
 	@Embedded
 	private Adresse adresse;
-	@ManyToOne
-	private Article article;
+	@OneToMany(mappedBy="adherents")
+	private List<Article> article = new ArrayList<>();
+	
+	public List<Article> getArticle() {
+		return article;
+	}
+
+	public void setArticle(List<Article> article) {
+		this.article = article;
+	}
+
+
 
 	public Adherent() {
 
