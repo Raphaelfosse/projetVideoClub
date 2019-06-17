@@ -1,6 +1,7 @@
 package metier;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class Realisateur {
@@ -11,7 +12,7 @@ public class Realisateur {
 	private String prenom; 
 	private String nom;
 	@ManyToMany
-	private Film film;
+	private List<Film> films;
 	
 	public Integer getId() {
 		return id;
@@ -32,18 +33,22 @@ public class Realisateur {
 		this.nom = nom;
 	}
 	
-	public Film getFilm() {
-		return film;
+	public List<Film> getFilms() {
+		return films;
 	}
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setFilms(List<Film> films) {
+		this.films = films;
 	}
 	@Override
 	public String toString() {
-		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", film=" + film + "]";
+		return "Realisateur [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", film=" + films + "]";
 	}
 
 	
-	
+	public void addFilm(Film f) {
+		List<Film> l = getFilms();
+		l.add(f);
+		setFilms(l);
+	}
 	
 }
