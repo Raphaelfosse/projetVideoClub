@@ -15,29 +15,34 @@ import dao.*;
 @Service
 public class ArticleService {
 	@Autowired
-	private IArticleRepository articleRepository;
+	private IArticleRepository iArticleRepository;
 
-//	@Autowired
-//	private GradeRepository gradeRepository;
-//
-//	@Autowired
-//	private SoldatGradeRepository soldatGradeRepository;
-//
-//	public boolean insert(Soldat soldat) {
-//		if (soldat.getNom() == null || soldat.getNom().isEmpty()) {
-//			return false;
-//		}
-//		soldatRepository.save(soldat);
-//		return true;
-//	}
-//
-//	public void delete(Soldat soldat) {
-//		Optional<Soldat> opt = soldatRepository.findByIdWithGrades(soldat.getId());
-//		if (opt.isPresent()) {
-//			soldatRepository.delete(opt.get());
-//		}
-//	}
-//
+	@Autowired
+	private IFilmRepository iFilmRepository;
+	
+	@Autowired
+	private IAdherentRepository iadherentRepository;
+
+	@Autowired
+	private IArticleIFilmRepository iArticleiFilmRepository;
+
+	
+	public boolean insert(IArticle iarticle) {
+		if (iarticle.getNom() == null || iarticle.getNom().isEmpty()) {
+			return false;
+		}
+		iarticleRepository.save(iarticle);
+		return true;
+	}
+
+	
+	public void delete(IArticle soldat) {
+		Optional<Soldat> opt = soldatRepository.findByIdWithGrades(soldat.getId());
+		if (opt.isPresent()) {
+			soldatRepository.delete(opt.get());
+		}
+	}
+
 //	public void addGrade(Soldat soldat, Grade grade) {
 //		Optional<Soldat> opt = soldatRepository.findByIdWithGrades(soldat.getId());
 //		if (opt.isPresent()) {

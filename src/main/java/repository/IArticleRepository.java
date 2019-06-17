@@ -2,7 +2,7 @@ package repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import metier.Article;
+import metier.*;
 
 public interface IArticleRepository extends JpaRepository<Article, Integer>{
 

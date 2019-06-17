@@ -15,11 +15,9 @@ public class TestArticle {
 		article1.setNbDisques(10);
 		article1.setNoArticle(20);
 		
-		
 		daoA.insert(article1);	
 		
 		ctx.close();
-
 	}
 
 }
