@@ -96,14 +96,6 @@ public class DAOAdherent implements IDAOAdherent {
 		return liste;
 	}
 
-	@Override
-	public List<Adherent> selectAllWithAdresseId(Integer id) {
-		Query query = em.createNativeQuery("SELECT * from adherent,adresse where adherent.adresse=id ", Adherent.class);
-
-		List<Adherent> liste = query.getResultList();
-
-		return liste;
-	}
 
 	@Override
 	public List<Adherent> selectAllWithCodePostal(String codePostal) {

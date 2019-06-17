@@ -5,9 +5,7 @@ import javax.persistence.*;
 @Entity
 @Embeddable
 public class Adresse {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+
 	private Integer numero;
 	private String rue;
 	private String ville;
@@ -17,13 +15,9 @@ public class Adresse {
 
 	}
 
-	public Integer getId() {
-		return id;
-	}
+	
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	
 
 	public Integer getNumero() {
 		return numero;
@@ -59,7 +53,7 @@ public class Adresse {
 
 	@Override
 	public String toString() {
-		return "Adresse [id=" + id + ", numero=" + numero + ", rue=" + rue + ", ville=" + ville + ", codePostal="
+		return "Adresse [numero=" + numero + ", rue=" + rue + ", ville=" + ville + ", codePostal="
 				+ codePostal + "]";
 	}
 
