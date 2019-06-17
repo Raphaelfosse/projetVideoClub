@@ -13,9 +13,9 @@ public class Film {
 	private String titre; 
 	private Date dateSortie;
 	@OneToMany
-	private Article article;
+	private List<Article> articles;
 	@ManyToMany
-	private Realisateur realisateur;
+	private List<Realisateur> realisateurs;
 	
 	public Integer getId() {
 		return id;
@@ -36,25 +36,29 @@ public class Film {
 		this.dateSortie = dateSortie;
 	}
 	
-	public Article getArticle() {
-		return article;
+	public List<Article> getArticles() {
+		return articles;
 	}
-	public void setArticle(Article article) {
-		this.article = article;
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
-	public Realisateur getRealisateur() {
-		return realisateur;
+	public List<Realisateur> getRealisateurs() {
+		return realisateurs;
 	}
-	public void setRealisateur(Realisateur realisateur) {
-		this.realisateur = realisateur;
+	public void setRealisateurs(List<Realisateur> realisateurs) {
+		this.realisateurs = realisateurs;
 	}
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", titre=" + titre + ", dateSortie=" + dateSortie + ", article=" + article
-				+ ", realisateur=" + realisateur + "]";
+		return "Film [id=" + id + ", titre=" + titre + ", dateSortie=" + dateSortie + ", article=" + articles
+				+ ", realisateur=" + realisateurs + "]";
 	}
 
-	
+	public void addRealisateur(Realisateur r) {
+		List<Realisateur> l = getRealisateurs();
+		l.add(r);
+		setRealisateurs(l);
+	}
 	
 	
 }

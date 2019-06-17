@@ -3,6 +3,9 @@ package metier;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Adherent.selectAllWithFilm", query = "select a from Adherent a left join fetch a.film")})
+
 public class Adherent {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
