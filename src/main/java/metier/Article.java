@@ -1,9 +1,13 @@
 package metier;
 
+
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_article")
 
 public class Article {
 	@Id
@@ -13,7 +17,7 @@ public class Article {
 	@ManyToOne
 	private Film film;
 	@OneToMany
-	private Adherent adherent;
+	private List<Adherent> adherents;
 
 	public Article() {
 	}
@@ -22,7 +26,6 @@ public class Article {
 		this.noArticle = noArticle;
 		this.nbDisques = nbDisques;
 	}
-
 	
 	public Film getFilm() {
 		return film;
@@ -32,12 +35,13 @@ public class Article {
 		this.film = film;
 	}
 
-	public Adherent getAdherent() {
-		return adherent;
+
+	public List<Adherent> getAdherents() {
+		return adherents;
 	}
 
-	public void setAdherent(Adherent adherent) {
-		this.adherent = adherent;
+	public void setAdherents(List<Adherent> adherents) {
+		this.adherents = adherents;
 	}
 
 	public Integer getNoArticle() {
@@ -58,10 +62,9 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [noArticle=" + noArticle + ", nbDisques=" + nbDisques + ", film=" + film + ", adherent="
-				+ adherent + "]";
+		return "Article [noArticle=" + noArticle + ", nbDisques=" + nbDisques + ", film=" + film + ", adherents="
+				+ adherents + "]";
 	}
-
 
 
 }
