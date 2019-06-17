@@ -2,24 +2,25 @@ package app;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import dao.DAOArticle;
 import metier.Article;
+import repository.IArticleRepository;
 
 
 public class TestArticle {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
-		DAOArticle daoA=ctx.getBean(DAOArticle.class);
-		Article article1=new Article();
-		article1.setNbDisques(10);
-		article1.setNoArticle(20);
+		IArticleRepository iar = ctx.getBean(IArticleRepository.class);
 		
+		Article a = new Article();
 		
-		daoA.insert(article1);	
+		a.setNoArticle(2);
+		a.setNbDisques(3);
+	
+		iar.save(a);	
 		
 		ctx.close();
-
 	}
-
 }
+
+
