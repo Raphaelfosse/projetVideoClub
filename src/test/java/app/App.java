@@ -14,6 +14,7 @@ import repository.IRealisateurRepository;
 import services.AdherentService;
 import services.ArticleService;
 import services.FilmService;
+import services.RealisateurService;
 
 public class App {
 	public static void main(String[] args) {
@@ -25,7 +26,7 @@ public class App {
 		IRealisateurRepository irr = ctx.getBean(IRealisateurRepository.class);
 		FilmService fs = ctx.getBean(FilmService.class);
 		ArticleService as = ctx.getBean(ArticleService.class);
-		
+		RealisateurService rs = ctx.getBean(RealisateurService.class);
 		
 		Adherent ade = new Adherent();
 		ade.setCivilite(ECivilite.na);
@@ -46,12 +47,12 @@ public class App {
 		
 		Film f = new Film();
 		f.setTitre("Warcraft : le commencement");
-		ifr.save(f);
+		fs.insert(f);
 		
 		Realisateur r = new Realisateur();
 		r.setNom("Tarentule");
 		r.setPrenom("Jacque");
-		irr.save(r);
+		rs.insert(r);
 		
 		fs.addRealisateur(f, r);
 		a.setFilm(f);

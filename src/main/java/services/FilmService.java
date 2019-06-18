@@ -28,5 +28,20 @@ public class FilmService {
 			iFilmRealisateurRepository.save(fr);
 		}
 	}
+	
+	public boolean insert(Film film) {
+		if (film.getTitre() == null || film.getTitre().isEmpty()) {
+			return false;
+		}
+		iFilmRepository.save(film);
+		return true;
+	}
+
+	public void delete(Film film) {
+		Optional<Film> opt = iFilmRepository.findById(film.getId());
+		if (opt.isPresent()) {
+			iFilmRepository.delete(opt.get());
+		}
+	}
 
 }
