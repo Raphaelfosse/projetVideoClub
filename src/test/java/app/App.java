@@ -12,6 +12,7 @@ import repository.IArticleRepository;
 import repository.IFilmRepository;
 import repository.IRealisateurRepository;
 import services.AdherentService;
+import services.ArticleService;
 import services.FilmService;
 
 public class App {
@@ -23,6 +24,7 @@ public class App {
 		IFilmRepository ifr = ctx.getBean(IFilmRepository.class);
 		IRealisateurRepository irr = ctx.getBean(IRealisateurRepository.class);
 		FilmService fs = ctx.getBean(FilmService.class);
+		ArticleService as = ctx.getBean(ArticleService.class);
 		
 		
 		Adherent ade = new Adherent();
@@ -34,29 +36,27 @@ public class App {
 		adresse.setRue("rue rougemont");
 		ade.setAdresse(adresse);
 		
+		
 		Article a = new Article();
 		a.setNoArticle(2);
 		a.setNbDisques(3);
 		a.setAdherents(ade);
+		adeService.insert(ade);
+		as.insert(a);
 		
 		Film f = new Film();
 		f.setTitre("Warcraft : le commencement");
-	
-		
+		ifr.save(f);
 		
 		Realisateur r = new Realisateur();
 		r.setNom("Tarentule");
 		r.setPrenom("Jacque");
-		r.setId(15);
-		f.setId(4);
-		System.out.println(r);
-		System.out.println(f);
+		irr.save(r);
+		
 		fs.addRealisateur(f, r);
-		ifr.save(f);	
 		a.setFilm(f);
 		iar.save(a);
-		adeService.insert(ade);
-		irr.save(r);
+		
 		ctx.close();
 	}
 }

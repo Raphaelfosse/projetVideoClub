@@ -77,8 +77,5 @@ public class Realisateur {
 			return false;
 		return true;
 	}
-
-	
-	
 	
 }

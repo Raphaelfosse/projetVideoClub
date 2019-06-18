@@ -1,8 +1,4 @@
 package services;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +6,6 @@ import org.springframework.stereotype.Service;
 
 import metier.*;
 import repository.*;
-import dao.*;
-
 @Service
 public class FilmService {
 	@Autowired
